@@ -1,30 +1,33 @@
 import { FiMapPin, FiMail, FiBriefcase, FiAward, FiShield, FiCode } from 'react-icons/fi';
+import { useLanguage } from '../LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
+
   const highlights = [
     {
       icon: <FiShield />,
-      title: 'Cybersécurité',
-      description: 'Spécialisation en sécurité des systèmes et réseaux'
+      title: t.about.highlights.cyber.title,
+      description: t.about.highlights.cyber.desc
     },
     {
       icon: <FiCode />,
-      title: 'Développement',
-      description: 'Applications web et mobiles sécurisées'
+      title: t.about.highlights.dev.title,
+      description: t.about.highlights.dev.desc
     },
     {
       icon: <FiAward />,
-      title: 'UQAC',
-      description: 'Baccalauréat en informatique - Finissant'
+      title: t.about.highlights.uqac.title,
+      description: t.about.highlights.uqac.desc
     }
   ];
 
   return (
     <section className="about section" id="about">
       <div className="container">
-        <h2 className="section-title">À propos de moi</h2>
+        <h2 className="section-title">{t.about.title}</h2>
         <p className="section-subtitle">
-          Découvrez mon parcours et ma passion pour l'informatique
+          {t.about.subtitle}
         </p>
 
         {/* Highlights Cards */}
@@ -41,23 +44,9 @@ const About = () => {
         {/* Main Content */}
         <div className="about-main">
           <div className="about-description">
-            <p>
-              Je suis finissant au baccalauréat en informatique à l'<strong>Université du
-              Québec à Chicoutimi (UQAC)</strong>, avec une spécialisation en cybersécurité et
-              un fort intérêt pour la protection des systèmes, des réseaux et des
-              applications.
-            </p>
-            <p>
-              J'aime analyser des environnements techniques, comprendre les risques
-              et mettre en place des solutions concrètes pour réduire les
-              vulnérabilités et les accès non autorisés.
-            </p>
-            <p>
-              En parallèle, je développe des compétences en <strong>programmation
-              et en développement d'applications</strong>. J'ai travaillé sur des projets de
-              développement mobile et web, ce qui me permet d'intégrer les bonnes pratiques de
-              sécurité dès la conception.
-            </p>
+            {t.about.description.map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
           </div>
 
           {/* Info Cards */}
@@ -65,29 +54,29 @@ const About = () => {
             <div className="about-info-card">
               <FiMapPin className="about-info-icon" />
               <div>
-                <span className="about-info-label">Localisation</span>
-                <span className="about-info-value">Chicoutimi(Québec), Canada</span>
+                <span className="about-info-label">{t.about.info.location}</span>
+                <span className="about-info-value">{t.about.info.locationValue}</span>
               </div>
             </div>
             <div className="about-info-card">
               <FiMail className="about-info-icon" />
               <div>
-                <span className="about-info-label">Email</span>
+                <span className="about-info-label">{t.about.info.email}</span>
                 <span className="about-info-value">oularelayba05@gmail.com</span>
               </div>
             </div>
             <div className="about-info-card">
               <FiBriefcase className="about-info-icon" />
               <div>
-                <span className="about-info-label">Disponibilité</span>
-                <span className="about-info-value">Stage / Poste junior</span>
+                <span className="about-info-label">{t.about.info.availability}</span>
+                <span className="about-info-value">{t.about.info.availabilityValue}</span>
               </div>
             </div>
             <div className="about-info-card">
               <FiAward className="about-info-icon" />
               <div>
-                <span className="about-info-label">Formation</span>
-                <span className="about-info-value">Baccalauréat - UQAC</span>
+                <span className="about-info-label">{t.about.info.education}</span>
+                <span className="about-info-value">{t.about.info.educationValue}</span>
               </div>
             </div>
           </div>

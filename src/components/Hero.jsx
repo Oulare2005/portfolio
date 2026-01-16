@@ -1,31 +1,33 @@
 import { Link } from 'react-scroll';
 import { FiDownload, FiArrowRight } from 'react-icons/fi';
+import { useLanguage } from '../LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+
   return (
     <section className="hero" id="hero">
       <div className="container">
         <div className="hero-content">
           <div className="hero-badge">
             <span className="hero-badge-dot"></span>
-            Disponible pour stage / poste junior
+            {t.hero.badge}
           </div>
-          <p className="hero-greeting">Bonjour, je suis</p>
+          <p className="hero-greeting">{t.hero.greeting}</p>
           <h1 className="hero-title">
             Layba <span>Oulare</span>
           </h1>
           <p className="hero-description">
-            Finissant en informatique à l'UQAC, spécialisé en cybersécurité.
-            Passionné par la sécurité des systèmes et le développement d'applications sécurisées.
+            {t.hero.description}
           </p>
           <div className="hero-buttons">
             <Link to="contact" smooth={true} duration={500}>
               <button className="btn btn-primary">
-                Me contacter <FiArrowRight />
+                {t.hero.contactBtn} <FiArrowRight />
               </button>
             </Link>
             <a href="/Layba-Oulare-CV.pdf" download className="btn btn-outline">
-              <FiDownload /> Télécharger CV
+              <FiDownload /> {t.hero.cvBtn}
             </a>
           </div>
         </div>

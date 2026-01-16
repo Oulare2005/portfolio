@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { FiMail, FiMapPin, FiLinkedin, FiGithub, FiSend } from 'react-icons/fi';
+import { useLanguage } from '../LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,7 +20,6 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Ouvre le client email avec les informations pré-remplies
     const mailtoLink = `mailto:oularelayba05@gmail.com?subject=${encodeURIComponent(formData.subject)}&body=${encodeURIComponent(`De: ${formData.name} (${formData.email})\n\n${formData.message}`)}`;
     window.location.href = mailtoLink;
   };
@@ -26,18 +27,16 @@ const Contact = () => {
   return (
     <section className="contact section" id="contact">
       <div className="container">
-        <h2 className="section-title">Me Contacter</h2>
+        <h2 className="section-title">{t.contact.title}</h2>
         <p className="section-subtitle">
-          N'hésitez pas à me contacter pour discuter d'opportunités
+          {t.contact.subtitle}
         </p>
 
         <div className="contact-content">
           <div className="contact-info">
-            <h3>Parlons de votre projet</h3>
+            <h3>{t.contact.talkTitle}</h3>
             <p>
-              Je suis actuellement à la recherche d'un stage ou d'un poste junior
-              en cybersécurité ou en informatique. Ouvert à toutes les opportunités
-              qui me permettront de mettre mes compétences en pratique.
+              {t.contact.talkDesc}
             </p>
 
             <div className="contact-details">
@@ -80,7 +79,7 @@ const Contact = () => {
                   <FiMapPin />
                 </div>
                 <div className="contact-item-text">
-                  <h4>Localisation</h4>
+                  <h4>{t.contact.location}</h4>
                   <span>Chicoutimi(Québec), Canada</span>
                 </div>
               </div>
@@ -89,58 +88,58 @@ const Contact = () => {
 
           <form className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Nom complet</label>
+              <label htmlFor="name">{t.contact.form.name}</label>
               <input
                 type="text"
                 id="name"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                placeholder="Votre nom"
+                placeholder={t.contact.form.namePlaceholder}
                 required
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email">{t.contact.form.email}</label>
               <input
                 type="email"
                 id="email"
                 name="email"
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="votre@email.com"
+                placeholder={t.contact.form.emailPlaceholder}
                 required
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="subject">Sujet</label>
+              <label htmlFor="subject">{t.contact.form.subject}</label>
               <input
                 type="text"
                 id="subject"
                 name="subject"
                 value={formData.subject}
                 onChange={handleChange}
-                placeholder="Sujet de votre message"
+                placeholder={t.contact.form.subjectPlaceholder}
                 required
               />
             </div>
 
             <div className="form-group">
-              <label htmlFor="message">Message</label>
+              <label htmlFor="message">{t.contact.form.message}</label>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="Votre message..."
+                placeholder={t.contact.form.messagePlaceholder}
                 required
               ></textarea>
             </div>
 
             <button type="submit" className="btn btn-primary">
-              <FiSend /> Envoyer le message
+              <FiSend /> {t.contact.form.send}
             </button>
           </form>
         </div>

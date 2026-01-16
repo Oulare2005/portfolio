@@ -1,3 +1,4 @@
+import { LanguageProvider } from './LanguageContext';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -6,10 +7,11 @@ import Projects from './components/Projects';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import LanguageToggle from './components/LanguageToggle';
 
 function App() {
   return (
-    <>
+    <LanguageProvider>
       <Navbar />
       <Hero />
       <About />
@@ -18,7 +20,8 @@ function App() {
       <Contact />
       <Footer />
       <ScrollToTop />
-    </>
+      <LanguageToggle />
+    </LanguageProvider>
   );
 }
 

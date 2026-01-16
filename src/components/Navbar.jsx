@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { Link } from 'react-scroll';
 import { FiHome, FiUser, FiCode, FiFolder, FiMail, FiMenu, FiX } from 'react-icons/fi';
+import { useLanguage } from '../LanguageContext';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -14,11 +16,11 @@ const Navbar = () => {
   };
 
   const navItems = [
-    { to: 'hero', icon: <FiHome />, label: 'Accueil' },
-    { to: 'about', icon: <FiUser />, label: 'À propos' },
-    { to: 'skills', icon: <FiCode />, label: 'Compétences' },
-    { to: 'projects', icon: <FiFolder />, label: 'Projets' },
-    { to: 'contact', icon: <FiMail />, label: 'Contact' },
+    { to: 'hero', icon: <FiHome />, label: t.nav.home },
+    { to: 'about', icon: <FiUser />, label: t.nav.about },
+    { to: 'skills', icon: <FiCode />, label: t.nav.skills },
+    { to: 'projects', icon: <FiFolder />, label: t.nav.projects },
+    { to: 'contact', icon: <FiMail />, label: t.nav.contact },
   ];
 
   return (
